@@ -145,77 +145,77 @@ extension Character {
 
     /// The Int representation of the Character
     public var int: Int {
-        return Int(self) ?? 0
+        return Int(self.string) ?? 0
     }
 
     /// The Int8 representation of the Character
     public var int8: Int8 {
-        return Int8(self) ?? 0
+        return Int8(self.string) ?? 0
     }
 
     /// The Int16 representation of the Character
     public var int16: Int16 {
-        return Int16(self) ?? 0
+        return Int16(self.string) ?? 0
     }
 
     /// The Int32 representation of the Character
     public var int32: Int32 {
-        return Int32(self) ?? 0
+        return Int32(self.string) ?? 0
     }
 
     /// The Int64 representation of the Character
     public var int64: Int64 {
-        return Int64(self) ?? 0
+        return Int64(self.string) ?? 0
     }
 
     /// The UInt representation of the Character
     public var uInt: UInt {
-        return UInt(self) ?? 0
+        return UInt(self.string) ?? 0
     }
 
     /// The UInt8 representation of the Character
     public var uInt8: UInt8 {
-        return UInt8(self) ?? 0
+        return UInt8(self.string) ?? 0
     }
 
     /// The UInt16 representation of the Character
     public var uInt16: UInt16 {
-        return UInt16(self) ?? 0
+        return UInt16(self.string) ?? 0
     }
 
     /// The UInt32 representation of the Character
     public var uInt32: UInt32 {
-        return UInt32(self) ?? 0
+        return UInt32(self.string) ?? 0
     }
 
     /// The UInt64 representation of the Character
     public var uInt64: UInt64 {
-        return UInt64(self) ?? 0
+        return UInt64(self.string) ?? 0
     }
 
     /// The Float16 representation of the Character
     public var float16: Float16 {
-        return Float16(self) ?? 0.0
+        return Float16(self.string) ?? 0.0
     }
 
     /// The Float32 representation of the Character
     public var float32: Float32 {
-        return Float32(self) ?? 0.0
+        return Float32(self.string) ?? 0.0
     }
 
     /// The Float64 representation of the Character
     public var float64: Float64 {
-        return Float64(self) ?? 0.0
+        return Float64(self.string) ?? 0.0
     }
 
     /// The Float representation of the Character
     public var float: Float {
-        return Float(self) ?? 0.0
+        return Float(self.string) ?? 0.0
     }
 
     /// The Double representation of the Character
     public var double: Double {
-        return Double(self) ?? 0.0
+        return Double(self.string) ?? 0.0
     }
 }
 
@@ -298,7 +298,7 @@ extension Int {
 
     /// Turns the current Integer (treated as a unix timestamp in seconds) into a legible timestamp
     func toTimestamp(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
-        if !self < 0 { return "Error" }
+        if self > 0 { return "Error" }
         let date = NSDate(timeIntervalSince1970: TimeInterval(self))
         let utcDateFormatter = DateFormatter()
         utcDateFormatter.dateStyle = dateStyle
@@ -1088,13 +1088,8 @@ extension Float {
     }
 
     /// Rounds itself to the nearest integer.
-    func round () -> Float {
+    func round() -> Float {
         return roundf(self)
-    }
-
-    /// Clamps self to a specified range.
-    func clamp(_ min: Float, _ max: Float) -> Float {
-        return max(min, min(max, self))
     }
 
     /// Random float between min and max (inclusive).
@@ -1189,84 +1184,6 @@ extension Float16 {
     }
 }
 
-// MARK: - Float32
-extension Float32 {
-    /// The String representation of the Float32
-    public var string: String {
-        return String(self)
-    }
-
-    /// The Int representation of the Float32
-    public var int: Int {
-        return Int(self)
-    }
-
-    /// The UInt representation of the Float32
-    public var uInt: UInt {
-        return UInt(self)
-    }
-
-    /// The UInt8 representation of the Float32
-    public var uInt8: UInt8 {
-        return UInt8(self)
-    }
-
-    /// The UInt16 representation of the Float32
-    public var uInt16: UInt16 {
-        return UInt16(self)
-    }
-
-    /// The UInt32 representation of the Float32
-    public var uInt32: UInt32 {
-        return UInt32(self)
-    }
-
-    /// The UInt64 representation of the Float32
-    public var uInt64: UInt64 {
-        return UInt64(self)
-    }
-
-    /// The Int8 representation of the Float32
-    public var int8: Int8 {
-        return Int8(self)
-    }
-
-    /// The Int16 representation of the Float32
-    public var int16: Int16 {
-        return Int16(self)
-    }
-
-    /// The Int32 representation of the Float32
-    public var int32: Int32 {
-        return Int32(self)
-    }
-
-    /// The Int64 representation of the Float32
-    public var int64: Int64 {
-        return Int64(self)
-    }
-
-    /// The Float16 representation of the Float32
-    public var float16: Float16 {
-        return Float16(self)
-    }
-
-    /// The Float64 representation of the Float32
-    public var float64: Float64 {
-        return Float64(self)
-    }
-
-    /// The Float representation of the Float32
-    public var float: Float {
-        return Float(self)
-    }
-
-    /// The Double representation of the Float32
-    public var double: Double {
-        return Double(self)
-    }
-}
-
 // MARK: - Float64
 extension Float64 {
     /// The String representation of the Float64
@@ -1347,109 +1264,14 @@ extension Float64 {
 
 // MARK: - Double
 extension Double {
-    /// The String representation of the Double
-    public var string: String {
-        return String(self)
-    }
-
-    /// The Int representation of the Double
-    public var int: Int {
-        return Int(self)
-    }
-
-    /// The UInt representation of the Double
-    public var uInt: UInt {
-        return UInt(self)
-    }
-
-    /// The UInt8 representation of the Double
-    public var uInt8: UInt8 {
-        return UInt8(self)
-    }
-
-    /// The UInt16 representation of the Double
-    public var uInt16: UInt16 {
-        return UInt16(self)
-    }
-
-    /// The UInt32 representation of the Double
-    public var uInt32: UInt32 {
-        return UInt32(self)
-    }
-
-    /// The UInt64 representation of the Double
-    public var uInt64: UInt64 {
-        return UInt64(self)
-    }
-
-    /// The Int8 representation of the Double
-    public var int8: Int8 {
-        return Int8(self)
-    }
-
-    /// The Int16 representation of the Double
-    public var int16: Int16 {
-        return Int16(self)
-    }
-
-    /// The Int32 representation of the Double
-    public var int32: Int32 {
-        return Int32(self)
-    }
-
-    /// The Int64 representation of the Double
-    public var int64: Int64 {
-        return Int64(self)
-    }
-
-    /// The Float representation of the Double
-    public var float: Float {
-        return Float(self)
-    }
-
-    /// The Float16 representation of the Double
-    public var float16: Float16 {
-        return Float16(self)
-    }
-
-    /// The Float32 representation of the Double
-    public var float32: Float32 {
-        return Float32(self)
-    }
-
     /// The Float64 representation of the Double
     public var float64: Float64 {
         return Float64(self)
     }
 
     /// Absolute value.
-    func abs () -> Double {
+    func abs() -> Double {
         return Foundation.fabs(self)
-    }
-    
-    /// Square root
-    func sqrt () -> Double {
-        return sqrt(self)
-    }
-    
-    /// Rounds self to the largest integer <= self.
-    func floor() -> Double {
-        return floor(self)
-    }
-    
-    /// Rounds self to the smallest integer >= self.
-    func ceil() -> Double {
-        return ceil(self)
-    }
-    
-    /// Rounds self to the nearest integer.
-    func round () -> Double {
-        return round(self)
-    }
-    
-    /// Clamps itself to a specified range.
-    func clamp (min: Double, _ max: Double) -> Double {
-        return max(min, min(max, self))
     }
 
     /// Random double between min and max (inclusive).
@@ -1501,20 +1323,20 @@ extension Color {
 /// Taken from github.com/CodeEditApp/CodeEdit/CodeEdit/Features/Settings/Views
 extension View {
     /// Hides the sidebar toggle in a `NavigationSplitView`
-    func hideSidebarToggle() -> some View {
-        modifier(HideSidebarToggleViewModifier())
-    }
-
-    /// Constrains the overlaying view to the height of its window
-    func constrainHeightToWindow() -> some View {
-        modifier(ConstrainHeightToWindowViewModifier())
+    func hideSidebarToggle(windowTitle: String) -> some View {
+        modifier(HideSidebarToggleViewModifier(windowTitle: windowTitle))
     }
 }
 
 private struct HideSidebarToggleViewModifier: ViewModifier {
+    let windowTitle: String
+
     func body(content: Content) -> some View {
         content
             .task {
+                var win: NSWindow? = nil
+                NSApp.windows.forEach { if $0.title == windowTitle { win = $0 } }
+                guard let window = win else { print("Couldn't find window: \(windowTitle)"); return }
                 let sidebaritem = "com.apple.SwiftUI.navigationSplitView.toggleSidebar"
                 let index = window.toolbar?.items.firstIndex { $0.itemIdentifier.rawValue == sidebaritem }
                 if let index {
@@ -1523,20 +1345,7 @@ private struct HideSidebarToggleViewModifier: ViewModifier {
             }
     }
 }
-
-private struct ConstrainHeightToWindowViewModifier: ViewModifier {
-    @State var height: CGFloat = 100
-
-    func body(content: Content) -> some View {
-        content
-            .frame(height: height - 100)
-            .onReceive(NSApp.settingsWindow!.publisher(for: \.frame)) { newValue in
-                height = newValue.height
-            }
-    }
-}
 /// No longer taken from github.com/CodeEditApp/CodeEdit
-
 
 // MARK: - Bool
 extension Bool {
@@ -1554,7 +1363,7 @@ extension Range {
     /// Returns an Array version of the range
     func toArray() -> [Any] {
         var results: [Any] = []
-        for value in self {
+        for value in Array(arrayLiteral: self) {
             results.append(value)
         }
 

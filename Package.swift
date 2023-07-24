@@ -8,7 +8,8 @@ let package = Package(
     platforms: [.macOS(.v11)],
     products: [
         .library(
-            name: "Extensions"
+            name: "Extensions",
+            targets: ["Extensions"]
         ),
     ],
     targets: [

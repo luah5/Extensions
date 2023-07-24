@@ -21,3 +21,5 @@ The most complete library of extensions for `Swift` and `SwiftUI`
 * `Collection`
 * `SwiftUI.Color`
 * `SwiftUI.View`
+* `Bool`
+* `Range`

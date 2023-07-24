@@ -1439,3 +1439,28 @@ private struct ConstrainHeightToWindowViewModifier: ViewModifier {
     }
 }
 /// No longer taken from github.com/CodeEditApp/CodeEdit
+
+
+// MARK: - Bool
+extension Bool {
+    /// Toggles the Bool:
+    /// - e.g: true.toggle() -> false, false.toggle() -> true
+    mutating func toggle() -> Bool {
+        self = !self
+
+        return self
+    }
+}
+
+// MARK: - Range
+extension Range {
+    /// Returns an Array version of the range
+    func toArray() -> [Any] {
+        var results: [Any] = []
+        for value in self {
+            results.append(value)
+        }
+
+        return results
+    }
+}

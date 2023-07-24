@@ -295,6 +295,17 @@ extension Int {
     public var double: Double {
         return Double(self)
     }
+
+    /// Turns the current Integer (treated as a unix timestamp in seconds) into a legible timestamp
+    func toTimestamp(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
+        if !self < 0 { return "Error" }
+        let date = NSDate(timeIntervalSince1970: TimeInterval(self))
+        let utcDateFormatter = DateFormatter()
+        utcDateFormatter.dateStyle = dateStyle
+        utcDateFormatter.timeStyle = timeStyle
+
+        return utcDateFormatter.string(from: date as Date)
+    }
 }
 
 // MARK: - UInt
@@ -1055,6 +1066,49 @@ extension Float {
     public var double: Double {
         return Double(self)
     }
+
+    /// Returns the absolute value of the Float
+    func abs() -> Float {
+        return fabsf(self)
+    }
+
+    /// Retunrs the square root of the Float
+    func sqrt() -> Float {
+        return sqrtf(self)
+    }
+
+    /// Returns the largest integer <= self
+    func floor() -> Float {
+        return floorf(self)
+    }
+
+    /// Returns the smallest integer >= self
+    func ceil() -> Float {
+        return ceilf(self)
+    }
+
+    /// Rounds itself to the nearest integer.
+    func round () -> Float {
+        return roundf(self)
+    }
+
+    /// Clamps self to a specified range.
+    func clamp(_ min: Float, _ max: Float) -> Float {
+        return max(min, min(max, self))
+    }
+
+    /// Random float between min and max (inclusive).
+    static func random(min: Float = 0, max: Float) -> Float {
+        let diff = max - min;
+        let rand = Float(arc4random() % (UInt32(RAND_MAX) + 1))
+        return ((rand / Float(RAND_MAX)) * diff) + min;
+    }
+
+    /// Removes zeros from a float
+    /// - Returns: A String copy of the float with removed zeros
+    func removeZeros() -> String {
+        return String(format: "%g", self)
+    }
 }
 
 // MARK: - Float16
@@ -1366,6 +1420,49 @@ extension Double {
     /// The Float64 representation of the Double
     public var float64: Float64 {
         return Float64(self)
+    }
+
+    /// Absolute value.
+    func abs () -> Double {
+        return Foundation.fabs(self)
+    }
+    
+    /// Square root
+    func sqrt () -> Double {
+        return sqrt(self)
+    }
+    
+    /// Rounds self to the largest integer <= self.
+    func floor() -> Double {
+        return floor(self)
+    }
+    
+    /// Rounds self to the smallest integer >= self.
+    func ceil() -> Double {
+        return ceil(self)
+    }
+    
+    /// Rounds self to the nearest integer.
+    func round () -> Double {
+        return round(self)
+    }
+    
+    /// Clamps itself to a specified range.
+    func clamp (min: Double, _ max: Double) -> Double {
+        return max(min, min(max, self))
+    }
+
+    /// Random double between min and max (inclusive).
+    static func random(min: Double = 0, max: Double) -> Double {
+        let diff = max - min;
+        let rand = Double(arc4random() % (UInt32(RAND_MAX) + 1))
+        return ((rand / Double(RAND_MAX)) * diff) + min;
+    }
+
+    /// Removes zeros from a Double
+    /// - Returns: A String copy of the Double with removed zeros
+    func removeZeros() -> String {
+        return String(format: "%g", self)
     }
 }
 
